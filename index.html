@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vraj Patel — AI/ML Engineer & Full-Stack Developer. Portfolio showcasing projects in Computer Vision, Machine Learning, and Full-Stack Web Development.">
+  <title>Vraj Patel — AI/ML Engineer & Developer</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Fira+Code:wght@400;500&family=Orbitron:wght@400;600;700;900&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Particles canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Loading screen -->
+  <div id="loader">
+    <div class="loader-container">
+      <div class="terminal-header">
+        <span>SYS.BOOT_SEQ</span>
+        <span class="status-text">INITIATING</span>
+      </div>
+
+      <div class="logs" id="logs">
+        <!-- Lines injected via JS -->
+      </div>
+
+      <div class="progress-wrapper">
+        <div class="progress-bar-bg">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="progress-info">
+          <span>LOADING_DATA</span>
+          <span class="progress-pct" id="progressPct">0%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <div class="nav-inner" id="navInner">
+      <div class="nav-logo" onclick="smoothScroll('hero')">VP</div>
+      <div class="nav-links">
+        <a href="#about" onclick="smoothScroll('about')" class="nav-link" data-section="about"><span class="nav-text">About</span></a>
+        <a href="#skills" onclick="smoothScroll('skills')" class="nav-link" data-section="skills"><span
+            class="nav-text">Skills</span></a>
+        <a href="#projects" onclick="smoothScroll('projects')" class="nav-link" data-section="projects"><span
+            class="nav-text">Projects</span></a>
+        <a href="#hackathons" onclick="smoothScroll('hackathons')" class="nav-link" data-section="hackathons"><span
+            class="nav-text">Hackathons</span></a>
+        <a href="#contact" onclick="smoothScroll('contact')" class="nav-link" data-section="contact"><span
+            class="nav-text">Contact</span></a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" onclick="toggleMobileNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV OVERLAY -->
+  <div class="mobile-nav" id="mobileNav">
+    <span class="mobile-nav-close" onclick="toggleMobileNav()">✕</span>
+    <a class="mobile-nav-link" onclick="mobileNavGo('hero')">Home</a>
+    <a class="mobile-nav-link" onclick="mobileNavGo('about')">About</a>
+    <a class="mobile-nav-link" onclick="mobileNavGo('skills')">Skills</a>
+    <a class="mobile-nav-link" onclick="mobileNavGo('projects')">Projects</a>
+    <a class="mobile-nav-link" onclick="mobileNavGo('hackathons')">Hackathons</a>
+    <a class="mobile-nav-link" onclick="mobileNavGo('contact')">Contact</a>
+  </div>
+
+
+  <!-- HERO -->
+  <div class="hero" id="hero">
+    <canvas id="neural-canvas"></canvas>
+    <div class="hero-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+
+    <div class="hero-content">
+      <div class="hero-name-badge">
+        <span class="status-dot"></span>
+        AI/ML Engineer &amp; Full-Stack Dev
+      </div>
+
+      <h1 class="hero-main-title">
+        <span class="text-white">VRAJ</span> <span class="gradient-text">PATEL</span>
+      </h1>
+
+      <p class="hero-subtitle-large">
+        Architecting Intelligent Systems with <span class="gradient-text">Deep Learning &amp; Code</span>
+      </p>
+
+      <p class="hero-subtitle">
+        Discover the logic behind a portfolio that echoes innovation, algorithms, and seamless digital experiences.
+      </p>
+
+      <button class="hero-explore-btn" onclick="smoothScroll('projects')">
+        Explore My Portfolio
+        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
+      </button>
+
+      <div class="hero-cards">
+        <div class="hero-card hero-card-1">
+          <div class="card-icon cyan">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z">
+              </path>
+              <path
+                d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z">
+              </path>
+            </svg>
+          </div>
+          <h3>Machine Learning</h3>
+          <p>Building predictive models and intelligent algorithms</p>
+        </div>
+        <div class="hero-card hero-card-2">
+          <div class="card-icon pink">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </div>
+          <h3>Computer Vision</h3>
+          <p>Extracting deep insights from complex visual data</p>
+        </div>
+        <div class="hero-card hero-card-3">
+          <div class="card-icon green">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <h3>Full-Stack Dev</h3>
+          <p>Creating seamless end-to-end web applications</p>
+        </div>
+        <div class="hero-card hero-card-4">
+          <div class="card-icon purple">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+              <polyline points="17 6 23 6 23 12"></polyline>
+            </svg>
+          </div>
+          <h3>Data Science</h3>
+          <p>Transforming raw data into actionable intelligence</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span>SCROLL</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label reveal">// 01 — About</div>
+    <div class="section-title reveal">WHO AM <span>I?</span></div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p class="about-text">
+          Motivated <strong>B.Tech Information Technology</strong> student at MBIT, Anand, Gujarat. I specialize in
+          building end-to-end <strong>AI-powered systems</strong> — from real-time computer vision pipelines to
+          full-stack civic platforms.<br><br>
+          I thrive at the intersection of <strong>machine learning and software engineering</strong>, turning complex
+          ideas into real-world, deployable solutions. Fast learner, team player, and always chasing the next hard
+          problem.
+        </p>
+        <div class="cgpa-display">
+          <div class="cgpa-label">CUMULATIVE GRADE POINT AVERAGE</div>
+          <div class="cgpa-value">8.61<span style="font-size:18px;opacity:0.5">/10</span></div>
+        </div>
+        <div class="sgpa-section">
+          <div class="sgpa-label">SEMESTER PERFORMANCE</div>
+          <div id="sgpa-bars"></div>
+        </div>
+      </div>
+      <div class="about-character reveal">
+        <div class="character-wrap">
+          <!-- Lottie Animated Character -->
+          <div id="lottie-character" class="lottie-character"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label reveal">// 02 — Skills</div>
+    <div class="section-title reveal">MY <span>SKILLS</span></div>
+    <div class="skills-layout">
+      <!-- LEFT SIDE -->
+      <div class="skills-side reveal">
+        <div class="skill-card" data-color="cyan">
+          <div class="skill-card-title">🌐 Frontend</div>
+          <div class="skill-card-tags">
+            <span class="sk-tag">HTML</span>
+            <span class="sk-tag">CSS</span>
+            <span class="sk-tag">JavaScript</span>
+          </div>
+        </div>
+        <div class="skill-card" data-color="pink">
+          <div class="skill-card-title">🤖 AI / ML</div>
+          <div class="skill-card-tags">
+            <span class="sk-tag">PyTorch</span>
+            <span class="sk-tag">TensorFlow</span>
+            <span class="sk-tag">Scikit-learn</span>
+            <span class="sk-tag">MediaPipe</span>
+            <span class="sk-tag">OpenCV</span>
+            <span class="sk-tag">YOLOv11</span>
+          </div>
+        </div>
+        <div class="skill-card" data-color="purple">
+          <div class="skill-card-title">🐍 Python</div>
+          <div class="skill-card-tags">
+            <span class="sk-tag">NumPy</span>
+            <span class="sk-tag">Streamlit</span>
+            <span class="sk-tag">Matplotlib</span>
+            <span class="sk-tag">Plotly</span>
+            <span class="sk-tag">Pandas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CENTER GLOBE -->
+      <div class="globe-wrapper reveal">
+        <div class="globe-glow"></div>
+        <div class="globe-ring"></div>
+        <div class="globe-ring"></div>
+        <div class="globe-scene">
+          <div class="globe-orbit" id="globeOrbit">
+            <!-- Icons placed by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="skills-side reveal">
+        <div class="skill-card" data-color="green">
+          <div class="skill-card-title">🛠️ Tools & Libraries</div>
+          <div class="skill-card-tags">
+            <span class="sk-tag">Flask</span>
+            <span class="sk-tag">Git</span>
+            <span class="sk-tag">GitHub</span>
+            <span class="sk-tag">SQLite</span>
+            <span class="sk-tag">PostgreSQL</span>
+            <span class="sk-tag">Render</span>
+          </div>
+        </div>
+        <div class="skill-card" data-color="orange">
+          <div class="skill-card-title">⚡ Vibe Coding</div>
+          <div class="skill-card-tags">
+            <span class="sk-tag">Claude</span>
+            <span class="sk-tag">Cursor</span>
+            <span class="sk-tag">Antigravity</span>
+            <span class="sk-tag">Copilot</span>
+          </div>
+        </div>
+        <div class="skill-card" data-color="yellow">
+          <div class="skill-card-title">💡 Soft Skills</div>
+          <div class="skill-card-tags">
+            <span class="sk-tag">Problem Solving</span>
+            <span class="sk-tag">Teamwork</span>
+            <span class="sk-tag">Logical Thinking</span>
+            <span class="sk-tag">Fast Learner</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <div class="divider"></div>
+
+
+
+
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label reveal">// 03 &mdash; Projects</div>
+    <div class="section-title reveal">WHAT I'VE <span>BUILT</span></div>
+
+    <!-- Project Filter Categories -->
+    <div class="project-filters reveal">
+      <button class="project-filter-btn active" onclick="filterProjects('all', this)">All Projects</button>
+      <button class="project-filter-btn" onclick="filterProjects('ai-vision', this)">AI & Computer Vision</button>
+      <button class="project-filter-btn" onclick="filterProjects('web-gis', this)">Web & GIS</button>
+      <button class="project-filter-btn" onclick="filterProjects('fintech', this)">FinTech & Analytics</button>
+    </div>
+
+    <!-- Featured Projects Grid -->
+    <div class="featured-projects-container reveal">
+
+      <!-- PROJECT 1: NeuralRestore -->
+      <article class="featured-project-item project-card" data-category="ai-vision">
+        <div class="project-content">
+          <span class="project-overline">Featured Project</span>
+          <h3 class="project-title">NeuralRestore</h3>
+          <div class="project-description-card">
+            <p>
+              An advanced <span class="hl-cyan">AI-powered image restoration</span> pipeline that automatically detects and repairs physical photo damage. Features a <span class="hl-purple">sequential 5-model deep learning</span> architecture utilizing EfficientNet-B4 + UNet, LaMa inpainting, DnCNN denoising, and <span class="hl-pink">Real-ESRGAN 4x</span> super-resolution scaling.
+            </p>
+          </div>
+          <ul class="project-tech-list">
+            <li>Python</li>
+            <li>PyTorch</li>
+            <li>Gradio</li>
+            <li>OpenCV</li>
+            <li>LaMa</li>
+            <li>Real-ESRGAN</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/vrajptl275" target="_blank" aria-label="GitHub Repository" class="project-icon-link" title="Source Code">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+            <a href="mailto:sp533013@gmail.com?subject=Demo%20Request%20for%20NeuralRestore" class="project-icon-link" aria-label="Request Demo" title="Request a demo">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="project-image-wrapper">
+          <div class="project-image-backdrop"></div>
+          <img src="images/neural_restore.png" alt="NeuralRestore Project Interface Mockup" loading="lazy" />
+        </div>
+      </article>
+
+      <!-- PROJECT 2: StockSense AI -->
+      <article class="featured-project-item project-card" data-category="fintech">
+        <div class="project-content">
+          <span class="project-overline">Featured Project</span>
+          <h3 class="project-title">StockSense AI</h3>
+          <div class="project-description-card">
+            <p>
+              An intelligent stock analysis and <span class="hl-green">predictive trading insights</span> platform. Combines <span class="hl-cyan">real-time market data streaming</span> with automated technical analysis (RSI, MACD, Bollinger Bands), interactive candlestick visualizers, and <span class="hl-pink">hybrid buy/sell recommendations</span>.
+            </p>
+          </div>
+          <ul class="project-tech-list">
+            <li>Flask</li>
+            <li>XGBoost</li>
+            <li>GARCH</li>
+            <li>Plotly</li>
+            <li>yfinance</li>
+            <li>Python</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/vrajptl275/stocksense-ai" target="_blank" aria-label="GitHub Repository" class="project-icon-link" title="Source Code">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+            <a href="mailto:sp533013@gmail.com?subject=Demo%20Request%20for%20StockSense%20AI" class="project-icon-link" aria-label="Request Demo" title="Request a demo">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="project-image-wrapper">
+          <div class="project-image-backdrop"></div>
+          <img src="images/stocksense.png" alt="StockSense AI Financial Dashboard Mockup" loading="lazy" />
+        </div>
+      </article>
+
+      <!-- PROJECT 3: Anand Civic System -->
+      <article class="featured-project-item project-card" data-category="web-gis">
+        <div class="project-content">
+          <span class="project-overline">Featured Project</span>
+          <h3 class="project-title">Anand Civic System</h3>
+          <div class="project-description-card">
+            <p>
+              A smart city civic issue reporting and municipal management system. Features location-aware complaint submission with <span class="hl-purple">GPS boundary validation</span>, real-time interactive <span class="hl-cyan">Leaflet GIS map</span> visualization, and <span class="hl-green">Gemini AI image verification</span>.
+            </p>
+          </div>
+          <ul class="project-tech-list">
+            <li>Node.js</li>
+            <li>Express</li>
+            <li>MongoDB</li>
+            <li>Leaflet.js</li>
+            <li>WebSockets</li>
+            <li>HTML5/CSS3</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/vrajptl275/civic-reporting" target="_blank" aria-label="GitHub Repository" class="project-icon-link" title="Source Code">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+            <a href="mailto:sp533013@gmail.com?subject=Demo%20Request%20for%20Anand%20Civic%20System" class="project-icon-link" aria-label="Request Demo" title="Request a demo">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="project-image-wrapper">
+          <div class="project-image-backdrop"></div>
+          <img src="images/civic_system.png" alt="Anand Civic Reporting System Map Mockup" loading="lazy" />
+        </div>
+      </article>
+
+      <!-- PROJECT 4: Smart Attendance System -->
+      <article class="featured-project-item project-card" data-category="ai-vision">
+        <div class="project-content">
+          <span class="project-overline">Featured Project</span>
+          <h3 class="project-title">Smart Attendance System</h3>
+          <div class="project-description-card">
+            <p>
+              A high-accuracy <span class="hl-pink">biometric facial recognition</span> attendance platform. Utilizes OpenCV and <span class="hl-cyan">facial embedding feature extraction</span> for instant live student verification, liveness validation, and <span class="hl-purple">automated CSV/PDF logging</span>.
+            </p>
+          </div>
+          <ul class="project-tech-list">
+            <li>Python</li>
+            <li>OpenCV</li>
+            <li>dlib</li>
+            <li>Face Recognition</li>
+            <li>SQLite</li>
+            <li>Tkinter</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/vrajptl275/smart-attendance" target="_blank" aria-label="GitHub Repository" class="project-icon-link" title="Source Code">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+            <a href="mailto:sp533013@gmail.com?subject=Demo%20Request%20for%20Smart%20Attendance%20System" class="project-icon-link" aria-label="Request Demo" title="Request a demo">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="project-image-wrapper">
+          <div class="project-image-backdrop"></div>
+          <img src="images/smart_attendance.png" alt="Smart Attendance Facial Recognition Mockup" loading="lazy" />
+        </div>
+      </article>
+
+      <!-- PROJECT 5: Driver Drowsiness Monitor -->
+      <article class="featured-project-item project-card" data-category="ai-vision">
+        <div class="project-content">
+          <span class="project-overline">Featured Project</span>
+          <h3 class="project-title">Driver Drowsiness Monitor</h3>
+          <div class="project-description-card">
+            <p>
+              A real-time dual-phase <span class="hl-green">computer vision safety system</span>. Uses MediaPipe Face Mesh for <span class="hl-cyan">Eye Aspect Ratio (EAR)</span> calculations and head pose estimation, coupled with a custom <span class="hl-pink">YOLOv11 model</span> to detect phone distraction.
+            </p>
+          </div>
+          <ul class="project-tech-list">
+            <li>Python</li>
+            <li>OpenCV</li>
+            <li>MediaPipe</li>
+            <li>YOLOv11</li>
+            <li>SciPy</li>
+            <li>Pygame</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/vrajptl275/driver-drowsiness-monitor" target="_blank" aria-label="GitHub Repository" class="project-icon-link" title="Source Code">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+            <a href="mailto:sp533013@gmail.com?subject=Demo%20Request%20for%20Driver%20Drowsiness%20Monitor" class="project-icon-link" aria-label="Request Demo" title="Request a demo">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="project-image-wrapper">
+          <div class="project-image-backdrop"></div>
+          <img src="images/driver_monitor.png" alt="Driver Drowsiness Safety Monitor Mockup" loading="lazy" />
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- HACKATHONS -->
+  <section id="hackathons">
+    <div class="section-label reveal">// 04 — Hackathons</div>
+    <div class="section-title reveal">BATTLE <span>LOG</span></div>
+    <div class="data-stream-container reveal">
+      <div class="energy-beam"></div>
+
+      <!-- CVMU Hackathon Node -->
+      <div class="data-node active" id="node-cvmu">
+        <div class="node-marker"></div>
+        <div class="node-content">
+          <div class="node-header" onclick="toggleNode('cvmu')">
+            <div class="node-title-group">
+              <span class="node-badge">⚡ 36-HOUR SPRINT</span>
+              <h3 class="node-title">CVMU Hackathon 4.0</h3>
+            </div>
+            <div class="node-year">2026</div>
+          </div>
+
+          <div class="node-body">
+            <div class="node-body-inner">
+              <div class="node-top-bar">
+                <button class="node-btn active" onclick="switchNodeView('cvmu', 'mission', event)">[ PROJECT ]</button>
+                <button class="node-btn" onclick="switchNodeView('cvmu', 'outcome', event)">[ OUTCOME ]</button>
+                <button class="node-btn" onclick="switchNodeView('cvmu', 'tech', event)">[ TECH ]</button>
+              </div>
+
+              <div class="node-text-area">
+                <div class="node-scanning-laser"></div>
+                <div id="text-cvmu" class="node-typewriter"></div>
+              </div>
+
+              <div class="node-status-bar">
+                <span>vraj/portfolio cvmu*</span>
+                <span class="cursor-blink">█</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIH Node -->
+      <div class="data-node" id="node-sih">
+        <div class="node-marker"></div>
+        <div class="node-content">
+          <div class="node-header" onclick="toggleNode('sih')">
+            <div class="node-title-group">
+              <span class="node-badge">🏛️ SIH QUALIFIER</span>
+              <h3 class="node-title">Internal SIH Selection</h3>
+            </div>
+            <div class="node-year">2025</div>
+          </div>
+
+          <div class="node-body">
+            <div class="node-body-inner">
+              <div class="node-top-bar">
+                <button class="node-btn active" onclick="switchNodeView('sih', 'mission', event)">[ PROJECT ]</button>
+                <button class="node-btn" onclick="switchNodeView('sih', 'outcome', event)">[ OUTCOME ]</button>
+                <button class="node-btn" onclick="switchNodeView('sih', 'tech', event)">[ TECH ]</button>
+              </div>
+
+              <div class="node-text-area">
+                <div class="node-scanning-laser"></div>
+                <div id="text-sih" class="node-typewriter"></div>
+              </div>
+
+              <div class="node-status-bar">
+                <span>vraj/portfolio sih*</span>
+                <span class="cursor-blink">█</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- 3D PARALLAX CONTACT SECTION -->
+  <section id="contact">
+    <div class="section-label reveal">// 05 — Contact</div>
+
+    <div class="contact-3d-wrapper reveal" id="contact3dWrapper">
+      <div class="bg-orbs-container">
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+        <div class="ambient-orb orb-3"></div>
+      </div>
+
+      <div class="contact-3d-card" id="contact3dCard">
+        <div class="c3d-glare"></div>
+
+        <!-- Left Side: 3D Info -->
+        <div class="c3d-info">
+          <h2 class="c3d-title">LET'S BUILD <br><span class="multi-gradient-text">THE FUTURE</span></h2>
+          <p class="c3d-subtitle">System ready. Waiting for incoming data packet. Establish connection via preferred
+            channels below.</p>
+
+          <div class="c3d-socials">
+            <a href="mailto:sp533013@gmail.com" class="c3d-social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              EMAIL
+            </a>
+            <a href="tel:+917698750331" class="c3d-social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z" />
+              </svg>
+              PHONE
+            </a>
+            <a href="https://github.com/vrajptl275" target="_blank" class="c3d-social-btn magenta-theme">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12" />
+              </svg>
+              GITHUB
+            </a>
+            <a href="https://linkedin.com/in/vraj-patel-56941a347" target="_blank" class="c3d-social-btn magenta-theme">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+              LINKEDIN
+            </a>
+          </div>
+
+          <a href="Vraj_Patel_Resume.pdf" target="_blank" class="c3d-resume-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            DOWNLOAD_RESUME
+          </a>
+        </div>
+
+        <!-- Right Side: 3D Form -->
+        <div class="c3d-form">
+          <form id="contactMailForm">
+            <div class="c3d-form-group">
+              <label class="c3d-label">NAME_ID</label>
+              <input type="text" class="c3d-input" id="cf-name" placeholder="John Doe" required>
+            </div>
+            <div class="c3d-form-group">
+              <label class="c3d-label">TOPIC</label>
+              <input type="text" class="c3d-input" id="cf-subject" placeholder="Project Inquiry" required>
+            </div>
+            <div class="c3d-form-group">
+              <label class="c3d-label">MESSAGE</label>
+              <textarea class="c3d-input" id="cf-message" placeholder="Type your message..." rows="4"
+                required></textarea>
+            </div>
+            <button type="button" class="c3d-submit" onclick="sendContactMail()">SEND TRANSMISSION</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <footer>
+    <div>PATEL VRAJ GAURANGKUMAR &nbsp;·&nbsp; <span>B.Tech IT</span> &nbsp;·&nbsp; MBIT ANAND &nbsp;·&nbsp; 2027</div>
+    <div class="footer-status">
+      <div class="status-online"></div>
+      SYSTEM STATUS: ONLINE &nbsp;·&nbsp; AVAILABLE FOR OPPORTUNITIES
+    </div>
+  </footer>
+
+  <!-- AI CHARACTER BUTTON -->
+  <div class="ai-btn" id="aiBtn" onclick="toggleChat()">
+    <div class="robot-head">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="32" y1="2" x2="32" y2="10" stroke="#00f5ff" stroke-width="2" stroke-linecap="round" />
+        <circle cx="32" cy="2" r="2" fill="#00f5ff">
+          <animate attributeName="r" values="2;3;2" dur="2s" repeatCount="indefinite" />
+        </circle>
+        <rect x="10" y="10" width="44" height="34" rx="6" fill="#050d1a" stroke="#00f5ff" stroke-width="1.5" />
+        <rect x="17" y="19" width="12" height="8" rx="2" fill="#00f5ff" opacity="0.9">
+          <animate attributeName="opacity" values="0.9;0.3;0.9" dur="2s" repeatCount="indefinite" />
+          <animate attributeName="height" values="8;6;8" dur="3s" repeatCount="indefinite" />
+        </rect>
+        <rect x="35" y="19" width="12" height="8" rx="2" fill="#00f5ff" opacity="0.9">
+          <animate attributeName="opacity" values="0.9;0.3;0.9" dur="2s" begin="0.1s" repeatCount="indefinite" />
+          <animate attributeName="height" values="8;6;8" dur="3s" begin="0.1s" repeatCount="indefinite" />
+        </rect>
+        <rect x="20" y="33" width="24" height="4" rx="2" fill="#bf00ff" opacity="0.8">
+          <animate attributeName="width" values="24;18;24" dur="2s" begin="1s" repeatCount="indefinite" />
+          <animate attributeName="x" values="20;23;20" dur="2s" begin="1s" repeatCount="indefinite" />
+        </rect>
+        <rect x="6" y="18" width="4" height="10" rx="2" fill="#00f5ff" opacity="0.6" />
+        <rect x="54" y="18" width="4" height="10" rx="2" fill="#00f5ff" opacity="0.6" />
+        <rect x="26" y="44" width="12" height="6" rx="2" fill="#050d1a" stroke="#00f5ff" stroke-width="1" />
+        <rect x="18" y="50" width="28" height="12" rx="4" fill="#050d1a" stroke="#00f5ff" stroke-width="1.5" />
+        <rect x="24" y="54" width="6" height="4" rx="1" fill="#ff0080" opacity="0.7">
+          <animate attributeName="opacity" values="0.7;1;0.7" dur="1.5s" repeatCount="indefinite" />
+        </rect>
+        <rect x="34" y="54" width="6" height="4" rx="1" fill="#bf00ff" opacity="0.7">
+          <animate attributeName="opacity" values="0.7;1;0.7" dur="1.5s" begin="0.75s" repeatCount="indefinite" />
+        </rect>
+      </svg>
+    </div>
+    <div class="ai-btn-label">ASK AI</div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+      <div class="chat-dot"></div>
+      <div class="chat-header-title">VRAJ.AI // Portfolio Assistant</div>
+      <div class="chat-close" onclick="toggleChat()">✕</div>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg ai">Hey! I'm Vraj's AI assistant. Ask me anything about his skills, projects, or background!</div>
+    </div>
+    <div class="quick-btns">
+      <button class="quick-btn" onclick="quickAsk('Tell me about Vraj projects')">Projects</button>
+      <button class="quick-btn" onclick="quickAsk('What are Vraj technical skills?')">Skills</button>
+      <button class="quick-btn" onclick="quickAsk('Tell me about Vraj education and CGPA')">Education</button>
+      <button class="quick-btn" onclick="quickAsk('Is Vraj available for opportunities?')">Hire?</button>
+    </div>
+    <div class="chat-input-row">
+      <input class="chat-input" id="chatInput" placeholder="Ask about Vraj..."
+        onkeydown="if(event.key==='Enter')sendMsg()" />
+      <button class="chat-send" onclick="sendMsg()">→</button>
+    </div>
+  </div>
+
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+
+  <!-- Portfolio Scripts -->
+  <script src="js/ai-engine.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/lottie-init.js"></script>
+  <script src="js/chat.js"></script>
+
+</body>
+</html>
